@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  client:
+    image: raghhav/fileshare-client:v1
+    build:
+      context: ./client
+    ports:
+      - "80:80"
+    networks:
+      - client
+      - server
+
+  server:
+    image: raghhav/fileshare-server:v1
+    build:
+      context: ./server
+    ports:
+      - "5000:5000"
+    networks:
+      - server
+
+networks:
+  client:
+  server:
